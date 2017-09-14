@@ -1,7 +1,24 @@
 <!-- INCLUDE HEAD -->
-<?php include("../views/head.html") ?>
+<?php
+error_reporting(0);
+header("Cache-Control: no-cache, must-revalidate");
+ include("../views/head.html") ?>
 
 <body>
+    <div id="pigmentum" class="modal-wrap">
+        <div class="modal">
+            <div class="modal-header">pigmentum.js</div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">ASD</div>
+        </div>
+    </div>
+    <div id="penis" class="modal-wrap">
+        <div class="modal">
+            <div class="modal-header">penis.js</div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">ASD</div>
+        </div>
+    </div>
     <div style="display: none" class="loading-screen">
         <div class="loader-wrap">
             <div class="loader">
@@ -11,24 +28,25 @@
             </div>
         </div>
     </div>
+    <div class="wrapper">
     <header class="header">
         <div class="container">
             <div class="row">
-                <div class="col-sm-7 col-12">
-                    <h1 class="main-title animation-fade-left">JVITOROC</h1>
+                <div class="col-sm-7 col-12 main-title-wrap">
+                    <h1 class="main-title animated animation-fade-left">JVITOROC</h1>
                 </div>
-                <nav class="nav animation-fade-right col-sm-5 col-12">
+                <nav class="nav animated animation-fade-right col-sm-5 col-12">
                     <ul>
                         <li>
                             <a target="_blank" href="https://drive.google.com/open?id=1goTxqhuJ9_opzQn7XD_IaXPes3BNzfhJ5shEW7hd0no">
-                                <svg aria-hidden="true"style="width:24px;height:24px" role="img" title="Currículo">
+                                <svg aria-hidden="true" style="width:24px;height:24px" role="img" title="Currículo">
                                     <use xlink:href="#curriculo"/>
                                 </svg>
                             </a>
                         </li>
                         <li>
                             <a target="_blank" href="https://github.com/jvitoroc">
-                                <svg aria-hidden="true"style="width:24px;height:24px" role="img" title="GitHub">
+                                <svg aria-hidden="true" style="width:24px;height:24px" role="img" title="GitHub">
                                     <use xlink:href="#github"/>
                                 </svg>
                             </a>
@@ -47,57 +65,65 @@
     </header>
     <section class="intro section">
         <div class="container">
-            <h2 class="intro-title animation-fade-right dash">Colocando em prática o que aprendi.</h2>
-            <div class="icons">
+            <h2 class="intro-title animated animation-fade-right dash">Colocando em prática o que aprendi.</h2>
+            <div class="icons animated animation-fade-down">
                 <div class="row">
                     <div class="col">
-                        <svg class="animation-fade-down" role="img" aria-hidden="true" title="HTML5 - created by @Templarian">
+                        <svg role="img" aria-hidden="true" title="HTML5 - created by @Templarian">
                             <use xlink:href="#html5"/>
                         </svg>
                     </div>
                     <div class="col">
-                        <svg class="animation-fade-down" role="img" aria-hidden="true" title="JavaScript">
+                        <svg role="img" aria-hidden="true" title="JavaScript">
                             <use xlink:href="#js"/>
                         </svg>
                     </div>
                     <div class="col">
-                        <svg class="animation-fade-down" role="img" aria-hidden="true" title="PHP">
+                        <svg role="img" aria-hidden="true" title="PHP">
                             <use xlink:href="#php"/>
                         </svg>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <svg class="animation-fade-down" role="img" aria-hidden="true" title="Node.js">
+                        <svg role="img" aria-hidden="true" title="Node.js">
                             <use xlink:href="#nodejs"/>
                         </svg>
                     </div>
                     <div class="col">
-                        <svg class="animation-fade-down" role="img" aria-hidden="true" title="CSS3">
+                        <svg role="img" aria-hidden="true" title="CSS3">
                             <use xlink:href="#css3"/>
                         </svg>
                     </div>
                     <div class="col">
-                        <svg class="animation-fade-down" role="img" aria-hidden="true" title="Photoshop">
+                        <svg role="img" aria-hidden="true" title="Photoshop">
                             <use xlink:href="#ps"/>
                         </svg>
                     </div>
                 </div>
             </div>
-            <p class="quote bullet-before animation-fade-left">Com pouca experiência em <span class="special-term">front end</span>, tentarei fazer meu máximo para construir qualquer projeto.</p>
+            <p class="quote bullet-before animated animation-fade-left">Com pouca experiência em <span class="special-term">front end</span>, tentarei fazer meu máximo para construir qualquer projeto.</p>
         </div>
     </section>
-    <section class="section">
+    <section class="section portfolio">
         <div class="container">
-            <h2 class="section-title animation-fade-down dash">Portfólio</h2>
-            <div class="section-body animation-fade-left">
+            <h2 class="section-title animated animation-fade-down dash">Portfólio</h2>
+            <div class="section-body animated animation-fade-left">
+                <div class="pages">
+                    <div data-target="#pigmentum" data-img="./imgs/face.PNG" class="page">
+                        <div class="pages-title">pigmentum.js</div>
+                    </div>
+                    <div data-target="#penis" data-img="./imgs/face.PNG"  class="page">
+                        <div class="pages-title">pigmentum.js</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section about-section">
         <div class="container">
-            <h2 class="section-title animation-fade-down dash">SOBRE MIM</h2>
-            <div class="section-body animation-fade-left">
+            <h2 class="section-title animated animation-fade-down dash">SOBRE MIM</h2>
+            <div class="section-body animated animation-fade-left">
                 <div class="row about">
                     <div class="about-item col-md-4">
                     <svg role="img" aria-hidden="true">
@@ -125,15 +151,15 @@
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section contact">
         <div class="container">
-            <h2 class="section-title animation-fade-down dash">Contato</h2>
-            <div class="section-body animation-fade-right">
+            <h2 class="section-title animated animation-fade-down dash">Contato</h2>
+            <div class="section-body animated animation-fade-right">
                 <div class="row">
                 <div class="col-sm-7">
                 <form novalidate id="sendEmail" method="POST" action="email.php" class="contact-form">
                 <div class="form-done success"><div><h5>A mensagem foi enviada com sucesso!</h5></div></div>
-                <div class="form-done fail"><div><h5>Por algum motivo a mensagem não!</h5></div></div>
+                <div class="form-done fail"><div><h5>Por algum motivo a mensagem não foi enviada!</h5></div></div>
                 <div class="sending"><div class="loader-wrap">
             <div class="loader">
                 <div></div>
@@ -197,6 +223,7 @@
             <p>Alguns direitos reservados - João Vitor de Oliveira</p>
         </div>
     </footer>
+    </div>
     <!-- INCLUDE SVGS -->
     <?php include("../views/svg.html") ?>
     

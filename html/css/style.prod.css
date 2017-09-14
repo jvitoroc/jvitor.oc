@@ -18,16 +18,11 @@
 }
 @font-face {
     font-family: 'Roboto';
-    src: url('../fonts/Roboto-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Roboto';
     src: url('../fonts/Roboto-Black.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
 }
+
 /* GENERAL */
 
 *,
@@ -39,7 +34,9 @@
 body {
     font-weight: 400;
     color: #353331;
+    background-color: #c9cab9;
 }
+
 body,
 input,
 textarea,
@@ -68,49 +65,16 @@ p {
     width: 170px;
     text-align: center;
     padding: 5px 0px;
-    position: relative;
     letter-spacing: 0.05em;
     margin: 0 auto;
 }
-.show-more:before {
-    content: '';
-    background: #353331;
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    -webkit-transition-duration: 0.2s;
-            transition-duration: 0.2s;
-    -webkit-transition-timing-function: ease;
-            transition-timing-function: ease;
-}
-.show-more:hover,
-.show-more:focus,
-.show-more:active {
-    color: #c9cab9;
-}
-.show-more:hover:before {
-    width: 100%;
-}
+
 a.reference {
     font-weight: bold;
     color: #353331;
     display: inline-block;
 }
-a.reference:after {
-    content: '';
-    display: block;
-    border-bottom: 1px #353331 solid;
-    width: 0%;
-    margin: -1px auto 0 auto;
-    -webkit-transition: 0.2s;
-    transition: 0.2s;
-}
-a.reference:hover:after {
-    width: 100%;
-}
+
 a.reference svg {
     height: 18px;
     width: 18px;
@@ -126,10 +90,13 @@ html,
 body {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
 }
 button {
     -webkit-tap-highlight-color: transparent;
+}
+.wrapper {
+    min-height:100%;
+    position:relative;
 }
 .dash:after {
     content: '';
@@ -174,24 +141,23 @@ button {
     display: none;
     background: #ff0033;
     color: #fff;
-    padding: 7px;
+    padding: 7px 4px;
     text-align: right;
-    width: 65%;
+    width: 60%;
     right: 0px;
     margin-left: auto;
     margin-bottom: -16px;
     font-size: 0.9em;
 }
 .form-done {
+    will-change: opacity;
     position: absolute;
     opacity: 0;
     display: none;
-    top: -5px;
-    left: -5px;
-    bottom: -5px;
-    right: -5px;
-    width: 100%;
-    height: 100%;
+    right: 15px;
+    padding: 5px 10px;
+    width: 80%;
+    top:-15px;
     z-index: 100;
     border-radius: 5px;
     text-align: center;
@@ -224,6 +190,16 @@ button {
         font-size: 0.7em;
     }
 }
+@media screen and (max-width: 409px) {
+    .error {
+        font-size: 0.6em;
+    }
+}
+@media screen and (max-width: 787px) {
+    .form-done {
+        font-size: 0.8em;
+    }
+}
 /* LOADING SCREEN */
 
 .cssanimations.js .loading-screen {
@@ -247,16 +223,6 @@ button {
     height: 40px;
     overflow: hidden;
     margin: 0 auto;
-}
-.loaded {
-    -webkit-animation-name: loaded;
-            animation-name: loaded;
-    -webkit-animation-duration: 0.7s;
-            animation-duration: 0.7s;
-    -webkit-animation-delay: 0.35s;
-            animation-delay: 0.35s;
-    -webkit-animation-fill-mode: forwards;
-            animation-fill-mode: forwards;
 }
 .loader div {
     position: relative;
@@ -320,22 +286,6 @@ button {
         left: -20px
     }
 }
-@-webkit-keyframes loaded {
-    0% {} 100% {
-        opacity: 0;
-        display: none;
-        z-index: -100;
-        visibility: hidden;
-    }
-}
-@keyframes loaded {
-    0% {} 100% {
-        opacity: 0;
-        display: none;
-        z-index: -100;
-        visibility: hidden;
-    }
-}
 /* HEADER */
 
 .header {
@@ -347,6 +297,7 @@ button {
     font-weight: 100;
 }
 .main-title {
+    margin-top: 3px;
     display: inline-block;
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -403,12 +354,24 @@ button {
     padding-top: 40px;
     padding-bottom: 40px;
 }
-body > .section:nth-child(odd) {
-    background-color: #c9cab9;
-}
-body > .section:nth-child(even) {
+
+.section.intro{
     background-color: #D5D6C3;
 }
+
+.section.portfolio{
+    background-color: #c9cab9;
+}
+
+.section.about-section{
+    background-color: #D5D6C3;
+}
+
+.section.contact{
+    background-color: #c9cab9;
+    padding-bottom:76px;
+}
+
 .section-title {
     font-size: 1.375em;
     margin-bottom: 25px;
@@ -416,7 +379,6 @@ body > .section:nth-child(even) {
     text-transform: uppercase;
     font-weight: 900;
 }
-.section-body {}
 /* INTRO */
 
 .intro-title {
@@ -517,7 +479,7 @@ body > .section:nth-child(even) {
     display: block;
 }
 .contact-misc {
-    margin-top: 13px;
+    margin-top: 14px;
     display: block;
 }
 .contact-misc p {
@@ -557,9 +519,22 @@ body > .section:nth-child(even) {
 
 .footer {
     background-color: #353331;
-    padding: 10px 0;
+    height: 36px;
     color: #D5D6C3;
     font-size: 0.875em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+
+.footer>div{
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
 }
 /* MEDIA QUERIES */
 
@@ -587,44 +562,94 @@ body > .section:nth-child(even) {
         margin-bottom: 30px;
     }
 }
+
+.pages .page{
+    float:left;
+    border: 4px solid #353331;
+    margin: 3px;
+    height: 125px;
+    width: 125px;
+    transition: 0.3s transform, 0.3s box-shadow, 0.5s width, 0.5s height;
+    box-shadow: 0 0 4px black;
+    position: relative;
+}
+    
+.pages .page:hover{
+    transform: scale(1.2);
+    box-shadow: -5px 5px 7px black;
+}
+
+.pages{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.modal-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transform: translate3d(0,-1000px,0);
+}
+
+.modal-wrap .modal{
+    flex: 1;
+    margin: 0 20px 0 20px;
+    max-width: 450px;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid #353331;
+}
+
+.modal .modal-header, .modal-footer{
+    background: #353331;
+    color: #D5D6C3;
+    padding: 5px;
+}
+
+.modal .modal-header{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.modal .modal-body{
+    background: url("../imgs/face.PNG");
+    background-size: cover;
+    padding-top: 100px;
+}
+
 /* ANIMATIONS */
 
-.csstransforms3d.cssanimations .animation-fade-left {
+.csstransforms3d.cssanimations .done .animated{
+    -webkit-animation: fade-in 0.5s 0.4s ease forwards;
+    animation: fade-in 0.5s 0.4s ease forwards;
+    will-change: transform, opacity;
     opacity: 0;
+}
+
+.csstransforms3d.cssanimations .done .animation-fade-left {
     -webkit-transform: translate3d(-100px, 0, 0);
     transform: translate3d(-100px, 0, 0);
 }
-.csstransforms3d.cssanimations .animation-fade-right {
-    opacity: 0;
+.csstransforms3d.cssanimations .done .animation-fade-right {
     -webkit-transform: translate3d(100px, 0, 0);
     transform: translate3d(100px, 0, 0);
 }
-.csstransforms3d.cssanimations .animation-fade-up {
-    opacity: 0;
+.csstransforms3d.cssanimations .done .animation-fade-up {
     -webkit-transform: translate3d(0, -100px, 0);
     transform: translate3d(0, -100px, 0);
 }
-.csstransforms3d.cssanimations .animation-fade-down {
-    opacity: 0;
+.csstransforms3d.cssanimations .done .animation-fade-down {
     -webkit-transform: translate3d(0, 100px, 0);
     transform: translate3d(0, 100px, 0);
 }
-.csstransforms3d.cssanimations .done .animation-fade-left {
-    -webkit-animation: fade-in 0.5s 0.5s ease forwards;
-    animation: fade-in 0.5s 0.5s ease forwards;
-}
-.csstransforms3d.cssanimations .done .animation-fade-right {
-    -webkit-animation: fade-in 0.5s 0.5s ease forwards;
-    animation: fade-in 0.5s 0.5s ease forwards;
-}
-.csstransforms3d.cssanimations .done .animation-fade-up {
-    -webkit-animation: fade-in 0.5s 0.5s ease forwards;
-    animation: fade-in 0.5s 0.5s ease forwards;
-}
-.csstransforms3d.cssanimations .done .animation-fade-down {
-    -webkit-animation: fade-in 0.5s 0.5s ease forwards;
-    animation: fade-in 0.5s 0.5s ease forwards;
-}
+
 @-webkit-keyframes fade-in {
     0% {} 100% {
         opacity: 1;

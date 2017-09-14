@@ -1,14 +1,18 @@
 "use strict";
 
-$(window).on("load", function () {
-    $(".loading-screen").addClass("loaded");
+var loadingScreen = $(".loading-screen");
+var body = $("body");
+var email = $("#sendEmail");
+
+$(window).on('load', function () {
+
+    loadingScreen.delay(350).animate({opacity:0}, 700, ()=>{
+        loadingScreen.remove();
+    });
+
     window.setTimeout(function () {
-        $("body").addClass("done");
+        body.addClass("done");
     }, 300);
-    window.setTimeout(function () {
-        $("body").css({ "-webkit-transform:": "translateZ(0)", transform: "translateZ(0)", "will-change": 'transform' });
-        $(".loading-screen").remove();
-    }, 1200);
 });
 
 var inputs = $(".input-group input, .input-group textarea");
@@ -26,21 +30,14 @@ inputs.on('focus', function (e) {
     if (target.val().length === 0 || target.val() === '') target.parent().find('label').animate({ top: '25px' }, 100);
 });
 
-$("#sendEmail").on("submit", function (e) {
-    e.preventDefault();
-
-    $(".error").each(function (e, a) {
-        $(a).css({ display: 'none' });
-    });
-    $(".sending").css({ display: 'table' });
-    $.ajax({
-        type: 'post',
-        url: '../email.php',
-        data: $("#sendEmail").serialize(),
-        dataType: "json",
-        success: function success(data) {
-            $(".sending").css({ display: 'none' });
-            if (data.error === true) {
+function handleResponse(data, status){
+    if(status !== 'success'){
+        $(".form-done.fail").css({ display: 'table' }).animate({ opacity: 1 }, 500).animate({ opacity: 0 }, 6500, function () {
+                $(this).css({ display: 'none' });
+            });
+        return;
+    }
+    if (data.error === true) {
                 for (var key in data) {
                     if (key === 'error') continue;
                     if (data.hasOwnProperty(key)) {
@@ -58,13 +55,27 @@ $("#sendEmail").on("submit", function (e) {
                     });
                 }
             }
-        },
-        fail: function fail(data) {
-            $(".sending").css({ display: 'none' });
-            $(".form-done.fail").css({ display: 'table' }).animate({ opacity: 1 }, 500).animate({ opacity: 0 }, 6500, function () {
-                $(this).css({ display: 'none' });
-            });
-        }
+}
+
+email.on("submit", function (e) {
+    e.preventDefault();
+
+    $(".error").each(function (e, a) {
+        $(a).css({ display: 'none' });
+    });
+    $(".sending").css({ display: 'table' });
+    $.ajax({
+        type: 'post',
+        url: '../email.php',
+        data: email.serialize(),
+        dataType: "json"
+    }).then((data, text, jq)=>{
+        $(".sending").css({ display: 'none' });
+        handleResponse(data, text);
+    },(jqXHR, textStatus, errorThrown)=>{
+        console.log(errorThrown);
+        $(".sending").css({ display: 'none' });
+        handleResponse(jqXHR.responseJSON, textStatus);
     });
     return false;
 });
@@ -76,4 +87,15 @@ $("#slideDown").on('click', function (e) {
         e.target.textContent = showing ? "Mostrar mais" : "Mostrar menos";
         showing = !showing;
     });
+});
+
+
+var pages = $('.pages');
+
+pages.find('.page').on('click',(e)=>{
+    $($(e.target).attr("data-target")).animat()
+});
+
+$(".modal-wrap").on('click', (e)=>{
+    $(e.target).addClass('closed').delay(500);
 });
