@@ -40,7 +40,7 @@ if($error){
 }else{
 
 	$email_envio = 'lopogax@gmail.com'; 
-	$email_pass = '123baby123123';
+	$email_pass = '***';
 
 	require ('../PHPMailer/PHPMailerAutoload.php');
 
